@@ -6,18 +6,6 @@
 <meta charset="UTF-8">
 <title>방명록 새로 쓰기</title>
 
-<script>
-	function send(f){
-		
-		var guestbookContent = f.guestbookContent.value;
-		var guestbookContentName = f.guestbookContentName.value;
-		
-		f.action = "insert.do";
-		f.method = "post";
-		f.submit();
-	}
-</script>
-
 </head>
 <body>
 
@@ -32,7 +20,7 @@
 			
 			<tr>
 				<th>작성자</th>
-				<td><input name="name" name="guestbookContentName"></td>
+				<td><input name="guestbookContentName"></td>
 			</tr>
 			
 			<tr>
@@ -43,6 +31,15 @@
 			</tr>
 		</table>
 	</form>
+	
+	<script>
+	function send(f){
+	
+		alert("xh");
+		f.action = "insert.do";
+		f.submit();
+	}
+</script>
 </body>
 </html>
 

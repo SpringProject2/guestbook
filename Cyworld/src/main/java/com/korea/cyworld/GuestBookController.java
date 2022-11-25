@@ -41,7 +41,6 @@ public class GuestBookController {
 	//새 글 작성
 	@RequestMapping("/insert.do")
 	public String insert(GuestBookVO vo) {
-		
 		int res = guestbook_dao.insert(vo);
 		return "redirect:list.do";
 	}
@@ -52,6 +51,8 @@ public class GuestBookController {
 	@ResponseBody // Ajax로 요청된 메서드는 결과를 콜백 메서드로 돌아가기 위해 반드시 필요한 어노테이션
 	public String delete(int guestbookContentNum) {
         // delete.do?idx=1
+		System.out.println(1);
+		System.out.println(guestbookContentNum);
         int res = guestbook_dao.delete(guestbookContentNum);
 
         String result = "no";
@@ -74,7 +75,7 @@ public class GuestBookController {
             model.addAttribute("vo", vo);
         }
 
-        return Comm.VIEW_PATH + "guestbook_modify_form.jsp";
+        return Comm.g_VIEW_PATH + "guestbook_modify_form.jsp";
 
     }
 

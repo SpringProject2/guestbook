@@ -8,8 +8,41 @@
 <title>방명록</title>
 
 <link rel="stylesheet" href="/cyworld/resources/css/guestbook.css">
+</head>
+<body>
 
-<script src="/cyworld/resources/js.httpRequest.js"></script>
+
+	<div id="main_box">
+	
+		<h1>방명록 목록</h1>
+		
+		<div align="center">
+			<input type="button" value="방명록 작성"
+					onclick="location.href='insert_form.do'">
+		</div> 		
+	</div>
+	
+ 	<c:forEach var="vo" items="${ list }"> 
+	
+ 		<div class="guestbook_box">
+			
+			<div class="type_guestbookContentName">${ vo.guestbookContentName }</div>
+ 			<div class="type_guestbookContent"> ${ vo.guestbookContent }</div>
+ 			<div class="type_guestbookRegdate">작성일: ${ vo.guestbookRegdate }</div>
+			
+			
+ 			<form>
+			<input type="text" name="guestbookContentNum" value="${ vo.guestbookContentNum }"> 
+ 			<input type="button" value="수정" onclick="modify(this.form);">
+ 			<input type="button" value="삭제" onclick="del(this.form);">
+ 			</form>
+			
+ 		</div>
+ 		
+	</c:forEach>
+		 			 			
+
+	<script src="/cyworld/resources/js/httpRequest.js"></script>
 
 <script>
 	function del(f){
@@ -20,6 +53,7 @@
 		
 		var url = "delete.do";
 		var param = "guestbookContentNum=" + f.guestbookContentNum.value;
+		alert(f.guestbookContentNum.value);
 		sendRequest(url, param, resultFn, "GET");
 	}
 	
@@ -47,46 +81,16 @@
             location.href="list.do";
         }
     }
+	
+  	//게시글 수정
+	function modify(f){
+		
+		f.action = 'modify_form.do';
+		f.method = "post";
+		f.submit();
+		
+	}
 
 </script>
-</head>
-<body>
-
-
-	<div id="main_box">
-	
-		<h1>방명록 목록</h1>
-		
-		<div align="center">
-			<input type="button" value="방명록 작성"
-					onclick="location.href='insert_form.do'">
-		</div> 		
-	</div>
-	
- 	<c:forEach var="vo" items="${ list }"> 
-	
- 		<div class="guestbook_box">
-			
-			<div class="type_guestbookContentName">${ vo.guestbookContentName }</div>
- 			<div class="type_guestbookContent"> ${ vo.guestbookContent }</div>
- 			<div class="type_guestbookRegdate">작성일: ${ vo.guestbookRegdate }</div>
-			
-			
- 			<form>
-			<input type="hidden" name="guestbookContentNum" value="${ vo.guestbookContentNum }"> 
- 			<input type="button" value="수정" onclick="modify(this.form);">
- 			<input type="button" value="삭제" onclick="del(this.form);">
- 			</form>
-			
- 		</div>
- 		
-	</c:forEach>
-		 			 			
-<!--  		<div align="right"> -->
-<!--  			<input type="button" value="글쓰기"  -->
-<!--  			       onclick="location.href='insert_form.do'"> -->
-<!--  		</div> -->
-
-	
 </body>
 </html>

@@ -39,23 +39,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where guestbookContentNum=#{guestbookContentNum}
     </update>
 
-    <!-- 좋아요 -->
-<!--     <select id="findLike" resultType="int"> -->
-<!--         select count(*) from gallery where -->
-<!--     </select> -->
-
-    <!-- 댓글수정 -->
-    <!--
-    <update id="galleryComment_update" parameterType="gallery">
-        update gallery set
-        galleryCommentRef = #{ galleryCommentRef },
-        galleryCommentStep = #{ galleryCommentStep },
-        galleryCommentName = #{ galleryCommentName },
-        galleryCommentRegdate = SYSDATE,
-        galleryCommentContent = #{ galleryCommentContent }
-    </update>
-     -->
-
 </mapper>
 
 

@@ -4,8 +4,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사진첩 수정</title>
-
+<title>방명록 수정</title>
+</head>
+<body>
+	<form method="post" enctype="multipart/form-data">
+		<input type="hidden" name="guestbookContentNum" value="${ vo.guestbookContentNum }">
+		
+		<table border="1" align="center">
+		
+			<caption>:::방명록 수정:::</caption>
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" name="guestbookContentName" value="${vo.guestbookContentName}" readonly></td>
+			</tr>
+			
+			<tr>
+				<th>내용</th>
+				<td><pre><textarea rows="5" cols="50" name="guestbookContent">${vo.guestbookContent}</textarea></pre></td>
+			</tr>
+			
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="수정" onclick="send(this.form);">
+					<input type="button" value="취소" onclick="location.href='list.do'">
+				</td>
+			</tr>
+			
+		</table>
+	</form>
+	
 	<!-- Ajax활용을 위한 js파일 로드 -->
 	<script src="/cyworld/resources/js/httpRequest.js"></script>
 
@@ -44,30 +72,5 @@
 		
 		
 	</script>
-
-</head>
-<body>
-	<form>
-		<input type="hidden" name="guestbookContentNum" value="${ vo.guestbookContentNum }">
-		
-		<table border="1" align="center">
-		
-			<caption>:::방명록 수정:::</caption>
-			
-			<tr>
-				<th>내용</th>
-				<td><pre><textarea rows="5" cols="50" name="content">${vo.guestbookContent}</textarea></pre></td>
-			</tr>
-			
-			
-			<tr>
-				<td colspan="2" align="center">
-					<input type="button" value="수정" onclick="send(this.form);">
-					<input type="button" value="취소" onclick="location.href='list.do'">
-				</td>
-			</tr>
-			
-		</table>
-	</form>
 </body>
 </html>
